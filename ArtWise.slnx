@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ArtWise.csproj" />
+  <Project Path="ArtWise.Data/ArtWise.Data.csproj" />
+  <Project Path="ArtWise.Domain/ArtWise.Domain.csproj" />
+  <Project Path="ArtWise.Services/ArtWise.Services.csproj" />
+</Solution>

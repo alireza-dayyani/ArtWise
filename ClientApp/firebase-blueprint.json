@@ -1,0 +1,139 @@
+{
+  "entities": {
+    "artwork": {
+      "title": "Artwork",
+      "description": "An artwork analyzed by the user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who saved this artwork."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Base64 encoded or external URL of the uploaded image."
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "The identified title of the artwork."
+        },
+        "artist": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "The identified artist of the artwork."
+        },
+        "year": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "The creation year of the artwork."
+        },
+        "style": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "The artistic style or movement."
+        },
+        "detailedDescription": {
+          "type": "string",
+          "maxLength": 5000,
+          "description": "Detailed analysis of the artwork content."
+        },
+        "historicalContext": {
+          "type": "string",
+          "maxLength": 5000,
+          "description": "Historical context behind the artwork."
+        },
+        "stylisticInfluences": {
+          "type": "string",
+          "maxLength": 5000,
+          "description": "Stylistic influences of the artist."
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories mapped to the artwork."
+        },
+        "tags": {
+          "type": "array",
+          "description": "Custom user-generated tags."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when this record was created."
+        }
+      },
+      "required": ["userId", "imageUrl", "title", "createdAt"]
+    },
+    "thread": {
+      "title": "Thread",
+      "description": "A conversation thread associated with an artwork.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns this thread."
+        },
+        "artworkId": {
+          "type": "string",
+          "description": "The ID of the artwork this thread discusses."
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "The summary of the discussion thread."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when this thread was created."
+        }
+      },
+      "required": ["userId", "artworkId", "title", "createdAt"]
+    },
+    "message": {
+      "title": "Message",
+      "description": "A message within a thread.",
+      "type": "object",
+      "properties": {
+        "threadId": {
+          "type": "string",
+          "description": "The ID of the parent thread."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "assistant"],
+          "description": "The sender role."
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 10000,
+          "description": "The text content of the message."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the message was sent."
+        }
+      },
+      "required": ["threadId", "userId", "role", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/artworks/{artworkId}": {
+      "schema": "artwork",
+      "description": "Collection of analyzed artworks saved by the user."
+    },
+    "/threads/{threadId}": {
+      "schema": "thread",
+      "description": "Collection of chat threads separated by artwork."
+    },
+    "/threads/{threadId}/messages/{messageId}": {
+      "schema": "message",
+      "description": "Messages inside a thread."
+    }
+  }
+}

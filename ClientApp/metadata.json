@@ -1,0 +1,6 @@
+{
+  "name": "ArtWise",
+  "description": "An AI-powered digital art curator and historical assistant with offline access, multi-thread project organisation, and gallery exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

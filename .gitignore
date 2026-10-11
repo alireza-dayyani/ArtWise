@@ -1,0 +1,27 @@
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+
+# SPA
+ClientApp/node_modules/
+ClientApp/dist/
+ClientApp/.env
+ClientApp/.env.local
+ClientApp/.env.development.local
+ClientApp/.env.test.local
+ClientApp/.env.production.local
+ClientApp/npm-debug.log*
+ClientApp/yarn-debug.log*
+ClientApp/yarn-error.log*
+ClientApp/pnpm-debug.log*
+
+# Environment
+.env
